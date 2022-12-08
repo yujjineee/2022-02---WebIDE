@@ -1,0 +1,18 @@
+FROM node:14
+
+RUN mkdir -p /app
+
+WORKDIR /app
+
+ADD . /app
+
+COPY package*.json /app
+
+RUN npm install --silent
+
+COPY . /app
+
+EXPOSE 7000
+
+CMD [ "npm", "start" ]
+
