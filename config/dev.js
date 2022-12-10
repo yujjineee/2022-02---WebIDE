@@ -1,3 +1,3 @@
 module.exports = {
-    mongoURI: 'mongodb://docker.for.mac.host.internal:27017/webide'
+    mongoURI: 'mongodb+srv://yujin:1234@webide.mju5iud.mongodb.net/?retryWrites=true&w=majority'
 }
