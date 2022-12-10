@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title> About Dongguk IDE & Problem Bank </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/about.css" />
+
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	<meta charset="UTF-8">
+
+	<title>&#x1f4bb; &#xd504;&#xb85c;&#xc81d;&#xd2b8; &#xc18c;&#xac1c;</title>
+
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="/" class="logo">
+					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Dongguk
+						ProblemBank</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">Dongguk IDE에 대하여</a></li>
+				<li><a href="/problem">문제 은행</a></li>
+				<li><a href="/generic">만든 사람</a></li>
+				<li><a href="/elements">Elements</a></li>
+			</ul>
+		</nav>
+
+		<!-- <body class="vscode-body vscode-light"> -->
+		<div id="main">
+			<div class="inner">
+				<br>
+				<p>동국대학교 컴퓨터공학과</p>
+				<p>2022년 2학기 개별연구</p>
+				<br>
+				<h2 id="-프로젝트-소개">💻 프로젝트 소개</h2>
+				<br>
+				<ul>
+					<li>Web IDE로 알고리즘을 학습할 수 있는 문제은행 사이트입니다.</li>
+					<li><kbd>python</kbd> 지원</li>
+				</ul>
+				<br>
+				<h2 id="️-개발-환경">🖥️ 개발 환경</h2>
+				<br>
+				<ul>
+					<li>Backend</li>
+				</ul>
+				<p><img
+						src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
+					<img
+						src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white">
+				</p>
+				<ul>
+					<li>Database</li>
+				</ul>
+				<img src="https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
+				<ul>
+					<li>Frontend</li>
+				</ul>
+				<p><img
+						src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+					<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+					<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+					<img
+						src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+				</p>
+				<ul>
+					<li>inner IDE</li>
+				</ul>
+				<img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+				<p>개발 상황에 따라 C, JAVA 등 추가 예정</p>
+				<ul>
+					<li>Docker</li>
+				</ul>
+				<img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+				<ul>
+					<li>IDE</li>
+				</ul>
+				<img
+					src="https://img.shields.io/badge/VS code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+				<ul>
+					<li>badge 출처</li>
+				</ul>
+				<p><a href="https://simpleicons.org/?q=node">https://simpleicons.org/?q=node</a></p>
+				<p><br><br></p>
+				<h2 id="️-환경-설정">🛠️ 환경 설정</h2>
+				<br>
+				<p><strong>데이터베이스 설정</strong></p>
+				<pre><code>Local - mongodb://docker.for.mac.host.internal:27017/webide
+
+그 외 (기본 설정) - mongodb+srv://yujin:1234@webide.mju5iud.mongodb.net/?retryWrites=true&amp;w=majority
+</code></pre>
+				<p><strong>Docker Build</strong></p>
+				<pre><code>docker build &lt;Dockerfile이 있는 경로&gt; -t web-ide:1.0.0
+ex) docker build . -t web-ide:1.0.0
+</code></pre>
+				<p><strong>도커 런 명령어</strong></p>
+				<pre><code>docker run -d -p 4000:7000 web-ide:1.0.0
+</code></pre>
+				<p><strong>컨테이너 삭제 / 이미지 삭제</strong></p>
+				<pre><code>1. 컨테이너
+    docer ps
+    docker rm [Container id]
+
+2. 이미지
+    docker images
+    docker rmi [Image id]
+
+3. 한번에
+    docker rmi -f [Image id]
+</code></pre>
+				<p><strong>설정 완료</strong></p>
+				<p>git clone - docker build - docker run</p>
+				<p><kbd> localhost:4000 </kbd> 으로 접속하면 환경 설정 완료!</p>
+				<br>
+				<h2 id="️-미리보기">🛠️ 미리보기</h2>
+
+
+			</div>
+		</div>
+
+</html>
+
+</div>
+</div>
+
+
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -76,6 +76,10 @@ app.post('/result/:_id', async (req, res) => {
 })
 
 
+app.get('/about', (req, res) => {
+    res.render(path.join(__dirname, "views/about.ejs"))
+})
+
 app.get('/generic', (req, res) => {
     res.render(path.join(__dirname, "views/generic.ejs"))
 })
