@@ -7,13 +7,13 @@ const pythonShell = require('python-shell')
 const config = require('./config/dev');
 const mongoose = require('mongoose')
 const ejs = require('ejs');
-const bodyParser= require('body-parser')
+const bodyParser = require('body-parser')
 
 const problems = require("./mongo/problem.js");
 
 mongoose.connect(config.mongoURI, {
     useNewUrlParser: true
-  })
+})
     .then(() => console.log('mongoDB Connected!'))
     .catch(err => console.log(err))
 
@@ -32,11 +32,15 @@ app.get('/', function (req, res) {
     res.render(path.join(__dirname, "views/index.ejs"))
 })
 
-app.get('/problem', (req, res) => {
+app.get('/problem', async (req, res) => {
 
-    problems.find((err, data) => {
-        console.log('find된 data: ', data)
-        res.render(path.join(__dirname, "views/problembank.ejs"), {data:data})
+    await problems.find((err, data) => {
+        try {
+            console.log('find된 data: ', data)
+            res.render(path.join(__dirname, "views/problembank.ejs"), { data: data })
+        } catch (err) {
+            console.error(err)
+        }
     })
 })
 
@@ -53,13 +57,13 @@ app.get('/elements', (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log(PORT+"번 포트로 연결되었습니다!")
+    console.log(PORT + "번 포트로 연결되었습니다!")
 })
 
 
 
-exports.getTest = async function(req, res) {
-    
+exports.getTest = async function (req, res) {
+
     var nStart = new Date().getTime()
 
     const options = {
@@ -71,14 +75,14 @@ exports.getTest = async function(req, res) {
     }
 
     pythonShell.PythonShell.run('test.py', options, function (err, results) {
-        
-        if(err) throw err
+
+        if (err) throw err
 
         console.log(results)
     })
 
     var nEnd = new Date().getTime()
-    console.log('running Time: ', nEnd-nStart, 'ms')
+    console.log('running Time: ', nEnd - nStart, 'ms')
 
     return res.send('END')
 
