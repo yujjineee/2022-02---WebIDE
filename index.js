@@ -1,7 +1,5 @@
-
 const express = require('express')
 const app = express()
-
 const path = require('path')
 const pythonShell = require('python-shell')
 const config = require('./config/dev');
@@ -9,6 +7,8 @@ const mongoose = require('mongoose')
 const ejs = require('ejs');
 const bodyParser = require('body-parser')
 
+
+// 데이터베이스
 const problems = require("./mongo/problem.js");
 
 mongoose.connect(config.mongoURI, {
@@ -19,6 +19,8 @@ mongoose.connect(config.mongoURI, {
 
 const PORT = 7000
 
+// =========================================================
+
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
@@ -27,7 +29,9 @@ app.set('views', __dirname + '/public/views')
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'ejs')
 
-app.get('/', function (req, res) {
+// =========================================================
+
+app.get('/', (req, res) => {
     // 혹은 app.get('/' , (req, res) => {})
     res.render(path.join(__dirname, "views/index.ejs"))
 })
@@ -44,9 +48,34 @@ app.get('/problem', async (req, res) => {
     })
 })
 
-app.get('/problem/:id', (req, res) => {
-    res.render(path.join(__dirname, "views/generic.ejs"))
+app.get('/problem/:_id', async (req, res) => {
+
+    await problems.findOne({_id : req.params._id}, (err, datas) => {
+        try {
+            console.log('find된 data: ', datas)
+            res.render(path.join(__dirname, "views/problempage.ejs"), { data: datas })
+        } catch (err) {
+            console.error(err)
+        }
+    })
+
+
+    // res.render(path.join(__dirname, "views/generic.ejs"))
 })
+
+app.post('/result', async (req, res) => {
+    // await problems.findOne({_id : req.params._id}, (err, data) => {
+    //     try {
+    //         console.log('find된 data: ', data)
+    //         console.log(req.body.)
+    //         res.render(path.join(__dirname, "views/resultpage.ejs"))
+    //     } catch (err) {
+    //         console.error(err)
+    //     }
+    const codes = req.body.code[0]
+    console.log(codes)
+    res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes})
+    })
 
 app.get('/generic', (req, res) => {
     res.render(path.join(__dirname, "views/generic.ejs"))
