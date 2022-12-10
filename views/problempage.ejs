@@ -71,38 +71,39 @@
 				<table style="margin:auto;">
 					<!-- 1행 -->
 					<tr style="margin:auto; background-color: white;">
-						<td  width="50%">
-								<br>
-								<h2 style="color: dimgray;"> &nbsp; 입력</h2>
-								<br>
-								<h3> &nbsp; <%= data. problem_input %></h3>
+						<td width="50%">
+							<br>
+							<h2 style="color: dimgray;"> &nbsp; 입력</h2>
+							<br>
+							<h3> &nbsp; <%= data. problem_input %>
+							</h3>
 						</td>
 						<td>
-								<br>
-								<h2 style="color: dimgray;"> &nbsp; 입력 예시</h2>
-								<br>
-								<pre><code style="font-size: 25px;"><%= data.input_example %></code></pre>
-								<!-- <h3> &nbsp; &nbsp; <%= data.input_example %></h3> -->
+							<br>
+							<h2 style="color: dimgray;"> &nbsp; 입력 예시</h2>
+							<br>
+							<pre><code style="font-size: 25px;"><%= data.input_example %></code></pre>
+							<!-- <h3> &nbsp; &nbsp; <%= data.input_example %></h3> -->
 						</td>
 					</tr>
 
 					<!-- 2행 -->
 					<tr>
 						<td width="50%">
-								<br>
-								<h2 style="color: dimgray;"> &nbsp; 출력</h2>
-								<br>
-								<h3> &nbsp; <%= data. problem_output %>
-								</h3>
-								<br>
+							<br>
+							<h2 style="color: dimgray;"> &nbsp; 출력</h2>
+							<br>
+							<h3> &nbsp; <%= data. problem_output %>
+							</h3>
+							<br>
 
 						</td>
 						<td>
-								<br>
-								<h2 style="color: dimgray;"> &nbsp; 출력 예시</h2>
-								<br>
-								<pre><code style="font-size: 25px;"><%= data.output_example %></code></pre>
-								<!-- <h3> &nbsp; &nbsp; <%= data.output_example %></h3> -->
+							<br>
+							<h2 style="color: dimgray;"> &nbsp; 출력 예시</h2>
+							<br>
+							<pre><code style="font-size: 25px;"><%= data.output_example %></code></pre>
+							<!-- <h3> &nbsp; &nbsp; <%= data.output_example %></h3> -->
 						</td>
 					</tr>
 				</table>
@@ -110,21 +111,21 @@
 
 			<br>
 			<div class="inner">
-			<form method="post" action="/result">
-				<pre><code>
+				<form method="post" action="/result/<%= data._id %>">
+					<pre><code>
 				<textarea name="code" rows="100%" cols="100%">
 				</textarea>
 			</code></pre>
-			<input type="submit" name="code" value="코드 제출">
-			</form>
+					<input type="submit" name="code" value="코드 제출">
+				</form>
 			</div>
 
-		<!-- Scripts -->
-		<script src="/assets/js/jquery.min.js"></script>
-		<script src="/assets/js/browser.min.js"></script>
-		<script src="/assets/js/breakpoints.min.js"></script>
-		<script src="/assets/js/util.js"></script>
-		<script src="/assets/js/main.js"></script>
+			<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
 
 </body>
 

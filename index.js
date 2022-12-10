@@ -58,24 +58,25 @@ app.get('/problem/:_id', async (req, res) => {
             console.error(err)
         }
     })
-
-
-    // res.render(path.join(__dirname, "views/generic.ejs"))
 })
 
-app.post('/result', async (req, res) => {
-    // await problems.findOne({_id : req.params._id}, (err, data) => {
-    //     try {
-    //         console.log('find된 data: ', data)
-    //         console.log(req.body.)
-    //         res.render(path.join(__dirname, "views/resultpage.ejs"))
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
+app.post('/result/:_id', async (req, res) => {
     const codes = req.body.code[0]
     console.log(codes)
+    
     res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes})
+})
+.get('/result/:_id', async (req, res) => {
+    await problems.findOne({_id : req.params._id}, (err, datas) => {
+        try {
+            console.log('find된 data: ', datas)
+            res.render(path.join(__dirname, "views/resultpage.ejs"), {data : datas})
+        } catch (err) {
+            console.error(err)
+        }
     })
+})
+
 
 app.get('/generic', (req, res) => {
     res.render(path.join(__dirname, "views/generic.ejs"))
