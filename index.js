@@ -1,17 +1,18 @@
+
 const express = require('express')
 const app = express()
-const path = require("path")
+
+const path = require('path')
 const pythonShell = require('python-shell')
 const config = require('./config/dev');
 const mongoose = require('mongoose')
 const ejs = require('ejs');
+const bodyParser= require('body-parser')
 
-
-const { Problem } = require("./mongo/problem");
-const { rmSync } = require('fs');
+const problems = require("./mongo/problem.js");
 
 mongoose.connect(config.mongoURI, {
-    useNewUrlParser: true, useUnifiedTopology: true
+    useNewUrlParser: true
   })
     .then(() => console.log('mongoDB Connected!'))
     .catch(err => console.log(err))
@@ -19,29 +20,37 @@ mongoose.connect(config.mongoURI, {
 const PORT = 7000
 
 app.use(express.static(__dirname + '/public'));
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
 app.set('views', __dirname + '/public/views')
 app.engine('html', require('ejs').renderFile)
-app.set('view engine', 'html')
+app.set('view engine', 'ejs')
 
-app.get('/', (req, res) => {
-    res.render(path.join(__dirname, "./views/index.html"));
+app.get('/', function (req, res) {
+    // 혹은 app.get('/' , (req, res) => {})
+
+    problems.find((err, data) => {
+        console.log('find된 data: ', data)
+        res.render(path.join(__dirname, "views/index.ejs"), {data:data})
+    })
+
 })
 
 app.get('/problem', (req, res) => {
-    var problems = Problem.find({})
-    res.render(path.join(__dirname, "./views/problembank.html"), { data: problems });
-    console.log('problems: ', problems)
+    res.render(path.join(__dirname, "views/problembank.ejs"));
 })
 
-app.get('/problem/:id')
+app.get('/problem/:id', (req, res) => {
+    res.render(path.join(__dirname, "views/generic.ejs"))
+})
 
 app.get('/generic', (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/generic.html"))
+    res.render(path.join(__dirname, "views/generic.ejs"))
 })
 
 app.get('/elements', (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/elements.html"))
+    res.render(path.join(__dirname, "views/elements.ejs"))
 })
 
 app.listen(PORT, () => {

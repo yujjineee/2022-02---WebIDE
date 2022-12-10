@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-
 const problemSchema = new Schema({
 
     "num": {
@@ -16,6 +15,14 @@ const problemSchema = new Schema({
         type: String, 
         required: true 
     },
+    "problem_input": {
+        type: String, 
+        required: true 
+    },
+    "problem_output": {
+        type: String, 
+        required: true 
+    },
     "input_example": { 
         type: String, 
         required: true 
@@ -27,6 +34,7 @@ const problemSchema = new Schema({
 })
 
 
-const Problem = mongoose.model('Problem', problemSchema)
-//다른 파일에서도 모듈을 쓸 수 있게
-module.exports = { Problem }
+var Problem = mongoose.model('problem', problemSchema)
+module.exports = Problem
+
+
