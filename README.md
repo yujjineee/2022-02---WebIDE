@@ -6,7 +6,7 @@
 <br>
 
 * Web IDE로 알고리즘을 학습할 수 있는 문제은행 사이트입니다.
-* python 지원
+* <kbd>python</kbd> 지원
   
 <br>
 
@@ -50,13 +50,11 @@ https://simpleicons.org/?q=node
 
 ## 🛠️ 환경 설정 ##
 
-----
-
 <br>
 
 __데이터베이스 설정__
     
-    Local 에서 mongoDB connect - mongodb://docker.for.mac.host.internal:27017/webide
+    Local - mongodb://docker.for.mac.host.internal:27017/webide
     
     그 외 (기본 설정) - mongodb+srv://yujin:1234@webide.mju5iud.mongodb.net/?retryWrites=true&w=majority
     
