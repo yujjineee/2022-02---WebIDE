@@ -4,15 +4,15 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-ADD . /app
+COPY package*.json .
 
-COPY package*.json /app
+RUN npm install
 
-RUN npm install --silent
-
-COPY . /app
+COPY . .
 
 EXPOSE 7000
+
+EXPOSE 27017
 
 CMD [ "npm", "start" ]
 
