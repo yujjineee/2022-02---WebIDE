@@ -5,57 +5,71 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Web IDE 문제은행</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<div class="inner">
+<head>
+	<title>Web IDE 문제은행</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
 
-							<!-- Logo -->
-								<a href="/" class="logo">
-									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Dongguk ProblemBank</span>
-								</a>
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
 
-							<!-- Nav -->
-								<nav>
-									<ul>
-										<li><a href="#menu">Menu</a></li>
-									</ul>
-								</nav>
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
 
-						</div>
-					</header>
+				<!-- Logo -->
+				<a href="/" class="logo">
+					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Dongguk
+						ProblemBank</span>
+				</a>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<h2>Menu</h2>
-						<ul>
-							<li><a href="/">Home</a></li>
-							<li><a href="/generic">Dongguk IDE에 대하여</a></li>
-							<li><a href="/problem">문제 은행</a></li>
-							<li><a href="/generic">만든 사람</a></li>
-							<li><a href="/elements">Elements</a></li>
-						</ul>
-					</nav>
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<header>
-								<h1>문제 LIST</h1>
-							</header>
-							<hr>
-							<section class="tiles">
-								<article class="style1">
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/generic">Dongguk IDE에 대하여</a></li>
+				<li><a href="/problem">문제 은행</a></li>
+				<li><a href="/generic">만든 사람</a></li>
+				<li><a href="/elements">Elements</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<header>
+					<h1>문제 LIST</h1>
+				</header>
+				<p1>
+					<%= data[0].title %>
+				</p1><br>
+				<p1>
+					<%= data[0].problem %>
+				</p1><br>
+				<p1>
+					<%= data[0].problem_input %>
+				</p1><br>
+				<hr>
+				<section class="tiles">
+					<!-- <article class="style1">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
@@ -65,8 +79,8 @@
 											<p>덧셈 연산을 해봅시다.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style2">
+								</article> -->
+					<!-- <article class="style2">
 									<span class="image">
 										<img src="images/pic02.jpg" alt="" />
 									</span>
@@ -76,8 +90,8 @@
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style3">
+								</article> -->
+					<!-- <article class="style3">
 									<span class="image">
 										<img src="images/pic03.jpg" alt="" />
 									</span>
@@ -87,8 +101,8 @@
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style4">
+								</article> -->
+					<!-- <article class="style4">
 									<span class="image">
 										<img src="images/pic04.jpg" alt="" />
 									</span>
@@ -98,19 +112,22 @@
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>A / B</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
+								</article> -->
+								
+					<% data.forEach(function(e) { %>
+					<article class="style1">
+						<span class="image">
+							<img src="images/pic05.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2> <%= e.title %> </h2>
+							<div class="content">
+								<p><%= e.problem %></p>
+							</div>
+						</a>
+					</article>
+					<% }) %>
+					<!-- <article class="style6">
 									<span class="image">
 										<img src="images/pic06.jpg" alt="" />
 									</span>
@@ -120,8 +137,8 @@
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style2">
+								</article> -->
+					<!-- <article class="style2">
 									<span class="image">
 										<img src="images/pic07.jpg" alt="" />
 									</span>
@@ -131,68 +148,68 @@
 											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 										</div>
 									</a>
-								</article>
-								<article class="style3">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>합</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>윤년</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style5">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>Ultricies</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style6">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>Dictum</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-								<article class="style4">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="/generic">
-										<h2>Pretium</h2>
-										<div class="content">
-											<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-										</div>
-									</a>
-								</article>
-							</section>
-						</div>
-					</div>
+								</article> -->
+					<!-- <article class="style3">
+						<span class="image">
+							<img src="images/pic08.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2>합</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article> -->
+					<!-- <article class="style1">
+						<span class="image">
+							<img src="images/pic09.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2>윤년</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article> -->
+					<!-- <article class="style5">
+						<span class="image">
+							<img src="images/pic10.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2>Ultricies</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article> -->
+					<!-- <article class="style6">
+						<span class="image">
+							<img src="images/pic11.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2>Dictum</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article> -->
+					<!-- <article class="style4">
+						<span class="image">
+							<img src="images/pic12.jpg" alt="" />
+						</span>
+						<a href="/generic">
+							<h2>Pretium</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article> -->
+				</section>
+			</div>
+		</div>
 
-				<!-- Footer -->
-					<!-- <footer id="footer">
+		<!-- Footer -->
+		<!-- <footer id="footer">
 						<div class="inner">
 							<section>
 								<h2>Get in touch</h2>
@@ -235,11 +252,12 @@
 			</div> -->
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
-	</body>
+</body>
+
 </html>

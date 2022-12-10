@@ -29,16 +29,15 @@ app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
     // 혹은 app.get('/' , (req, res) => {})
-
-    problems.find((err, data) => {
-        console.log('find된 data: ', data)
-        res.render(path.join(__dirname, "views/index.ejs"), {data:data})
-    })
-
+    res.render(path.join(__dirname, "views/index.ejs"))
 })
 
 app.get('/problem', (req, res) => {
-    res.render(path.join(__dirname, "views/problembank.ejs"));
+
+    problems.find((err, data) => {
+        console.log('find된 data: ', data)
+        res.render(path.join(__dirname, "views/problembank.ejs"), {data:data})
+    })
 })
 
 app.get('/problem/:id', (req, res) => {
