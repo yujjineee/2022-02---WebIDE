@@ -67,7 +67,7 @@ app.post('/result/:_id', async (req, res) => {
     await problems.findOne({ _id : req.params._id}, async (err, datas) => {
         try {
             console.log('find된 data: ', datas)
-            var compare_data, compare_result
+
             await pythonShell.PythonShell.runString(codes, null, function (err, results) {
 
                 if (err) throw err
