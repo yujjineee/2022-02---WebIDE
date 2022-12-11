@@ -87,6 +87,12 @@ __컨테이너 삭제 / 이미지 삭제__
     3. 한번에
         docker rmi -f [Image id]
 
+__CodeMirror 파일 추가__
+
+    https://codemirror.net/5/doc/releases.html 접속
+    Version 5.65.10 다운로드 - public/assets 폴더에 압축 해제
+
+
 __설정 완료__
 
 git clone - docker build - docker run
