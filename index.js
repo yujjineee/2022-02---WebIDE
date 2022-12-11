@@ -64,15 +64,35 @@ app.post('/result/:_id', async (req, res) => {
     const codes = req.body.code[0]
     console.log(codes)
     
-    await problems.findOne({ _id : req.params._id}, (err, datas) => {
+    await problems.findOne({ _id : req.params._id}, async (err, datas) => {
         try {
             console.log('find된 data: ', datas)
-            res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes, data: datas})
+            var compare_data, compare_result
+            await pythonShell.PythonShell.runString(codes, null, function (err, results) {
+
+                if (err) throw err
+                console.log('results: ', results)
+
+                compare_data = datas
+                compare_result = results
+
+                if (datas.ouput_example = compare_result) {
+                    str = '정답입니다!'
+                } else {
+                    str = '틀렸습니다!'
+                }
+                
+                res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes, data: datas, result: results})
+            })
+            
+            
+
         } catch (err) {
             console.error(err)
-
         }
     })
+
+    
 })
 
 
@@ -96,26 +116,5 @@ app.listen(PORT, () => {
 
 exports.getTest = async function (req, res) {
 
-    var nStart = new Date().getTime()
-
-    const options = {
-
-        mode: 'text',
-        pythonPath: '',
-        pythonOptions: ['-u'],
-        scriptPath: path.join(__dirname, "./build/python"),
-    }
-
-    pythonShell.PythonShell.run('test.py', options, function (err, results) {
-
-        if (err) throw err
-
-        console.log(results)
-    })
-
-    var nEnd = new Date().getTime()
-    console.log('running Time: ', nEnd - nStart, 'ms')
-
-    return res.send('END')
-
+    
 }
