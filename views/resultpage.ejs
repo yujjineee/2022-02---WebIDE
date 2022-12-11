@@ -60,31 +60,34 @@
 				<hr>
 				<table>
 					<tr>
-						<td width="50%">
+						<td>
 							<br>
 							<h2> &nbsp; 작성한 코드 </h2>
 							<pre><code><%= code %></code></pre>
 						</td>
-						<td width="50%">
+						<td>
 							<br>
 							<h2> &nbsp; 출력 결과 </h2>
 							<pre><code><%= result %></code></pre>
 						</td>
+						<td>
+							<br>
+							<h2> &nbsp; 정답 출력 </h2>
+							<pre><code><%= answer %></code></pre>
+						</td>
 					</tr>
 				</table>
 
-				<hr>
-				<%= data.title %>
 				<br>
-				
-				<%= data.output_example %>
-				<br>
-
+				<% if (result===answer) {%>
+				<h2>정답입니다!</h2>
+				<%} else {%>
+				<h2>오답입니다!</h2>  
+				<%}%>
+				  
+				   
 			</div>
 		</div>
-
-
-
 	</div>
 
 	<!-- Scripts -->

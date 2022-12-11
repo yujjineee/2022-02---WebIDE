@@ -71,29 +71,28 @@ app.post('/result/:_id', async (req, res) => {
             await pythonShell.PythonShell.runString(codes, null, function (err, results) {
 
                 if (err) throw err
-                console.log('results: ', results)
 
-                compare_data = datas
-                compare_result = results
+                console.log('result: ', results)
+                console.log('datas: ', datas)
 
-                if (datas.ouput_example = compare_result) {
-                    str = '정답입니다!'
-                } else {
-                    str = '틀렸습니다!'
-                }
+                results = Number(results)
+                datas = Number(datas.output_example)
+
+                console.log('result: ', results)
+                console.log('datas: ', datas)
+
                 
-                res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes, data: datas, result: results})
+                res.render(path.join(__dirname, "views/resultpage.ejs"), {code : codes, answer: datas, result: results})
             })
             
-            
-
         } catch (err) {
             console.error(err)
         }
     })
-
     
 })
+
+// https://www.npmjs.com/package/python-shell
 
 
 app.get('/about', (req, res) => {
